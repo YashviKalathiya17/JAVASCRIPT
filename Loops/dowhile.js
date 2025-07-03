@@ -1,4 +1,4 @@
-// Do-while Loop-at least runs one time
+// Do-while Loop-at least runs once time
 
 let i = 10;
 do {
