@@ -1,4 +1,4 @@
-// Types of comments in JavaScript
+// Types of comments in-JavaScript
 
 // 1. Single-line comment
 // This is a single-line comment
