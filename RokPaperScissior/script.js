@@ -3,7 +3,7 @@ function play(playerChoice) {
   const computerChoice = choices[Math.floor(Math.random() * 3)];
     
 
-  // Set images
+  // Set images -rock ,paper ,scissor:
   document.getElementById('player-choice').innerHTML =
     `<img src="${playerChoice}.png" alt="${playerChoice}">`;
 
