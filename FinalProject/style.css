@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form input,
+form textarea,
+form select,
+form button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.task {
+    border-left: 6px solid;
+    padding: 10px;
+    margin-top: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+.task.low {
+    border-color: green;
+}
+
+.task.medium {
+    border-color: orange;
+}
+
+.task.high {
+    border-color: red;
+}
+
+.task-actions {
+    margin-top: 10px;
+}
+
+.task-actions button {
+    margin-right: 10px;
+}
+
+#filterSection {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
