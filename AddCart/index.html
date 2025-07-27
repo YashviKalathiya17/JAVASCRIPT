@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Add to Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f7f7f7;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: #fff;
+      border-radius: 8px;
+      max-width: 300px;
+    }
+
+    .cart {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      border: 2px dashed #333;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Products</h2>
+
+  <div class="product">
+    <h3>Apple</h3>
+    <p>Price: ₹100</p>
+    <button onclick="addToCart('Apple', 100)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <h3>Banana</h3>
+    <p>Price: ₹50</p>
+    <button onclick="addToCart('Banana', 50)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <h3>Mango</h3>
+    <p>Price: ₹80</p>
+    <button onclick="addToCart('Mango', 80)">Add to Cart</button>
+  </div>
+
+  <div class="cart">
+    <h3>🛒 Cart</h3>
+    <ul id="cart-items"></ul>
+    <strong>Total: ₹<span id="total">0</span></strong>
+  </div>
+
+  <script>
+    let total = 0;
+
+    function addToCart(productName, price) {
+      const cartItems = document.getElementById("cart-items");
+      const li = document.createElement("li");
+      li.textContent = `${productName} - ₹${price}`;
+      cartItems.appendChild(li);
+
+      total += price;
+      document.getElementById("total").textContent = total;
+    }
+  </script>
+
+</body>
+</html>

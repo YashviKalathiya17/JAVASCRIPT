@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Corona Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 40px;
+      text-align: center;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .error {
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🌍 COVID-19 Tracker</h2>
+  <p>Enter country name (like: India, USA, Brazil)</p>
+
+  <input type="text" id="countryInput" placeholder="Enter Country" />
+  <button onclick="getCoronaData()">Get Data</button>
+
+  <div id="result" class="card" style="display:none;"></div>
+  <div id="error" class="error"></div>
+
+  <script>
+    async function getCoronaData() {
+      const country = document.getElementById("countryInput").value.trim();
+      const resultDiv = document.getElementById("result");
+      const errorDiv = document.getElementById("error");
+
+      if (!country) {
+        errorDiv.textContent = "Please enter a country name.";
+        resultDiv.style.display = "none";
+        return;
+      }
+
+      const url = `https://disease.sh/v3/covid-19/countries/${country}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Country not found or API error.");
+        }
+
+        const data = await response.json();
+
+        resultDiv.innerHTML = `
+          <h3>${data.country}</h3>
+          <img src="${data.countryInfo.flag}" width="80" /><br><br>
+          <strong>Cases:</strong> ${data.cases.toLocaleString()}<br>
+          <strong>Deaths:</strong> ${data.deaths.toLocaleString()}<br>
+          <strong>Recovered:</strong> ${data.recovered.toLocaleString()}<br>
+          <strong>Today's Cases:</strong> ${data.todayCases.toLocaleString()}<br>
+          <strong>Active:</strong> ${data.active.toLocaleString()}<br>
+        `;
+
+        resultDiv.style.display = "block";
+        errorDiv.textContent = "";
+
+      } catch (error) {
+        resultDiv.style.display = "none";
+        errorDiv.textContent = error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>
